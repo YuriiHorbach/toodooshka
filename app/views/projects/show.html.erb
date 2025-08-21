@@ -1,5 +1,16 @@
 <%= @project.name %>
 
+<ul>
+  <% @project.todos.each do |todo|%>
+    <li>
+      <%= link_to todo.name, todo_path(todo) %>
+      completed: <% if todo.completed %>
+        ✅
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
 <p>
   <%= button_to 'Delete project', project_path(@project), method: :delete %>
 </p>
